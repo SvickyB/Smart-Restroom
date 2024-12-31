@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# .env file
+.env
+
+# Logs
+*.log
+
+# npm-debug.log
+npm-debug.log*
+
+# Directory for build artifacts
+dist/
+build/
+
+# Operating System Files (for macOS, Windows, etc.)
+.DS_Store
+Thumbs.db
