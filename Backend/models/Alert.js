@@ -1,6 +1,5 @@
-// backend/models/Alert.js
 const { Pool } = require('pg');
-require('dotenv').config();  // Load environment variables from .env file
+require('dotenv').config(); 
 
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -20,7 +19,6 @@ const cleanupAlerts = async () => {
 const initializeDatabase = async () => {
   const client = await pool.connect();
   try {
-    // Create alerts table
     await client.query(`
       CREATE TABLE IF NOT EXISTS alerts (
         id SERIAL PRIMARY KEY,
@@ -33,7 +31,6 @@ const initializeDatabase = async () => {
       );
     `);
 
-    // Create index for status
     await client.query(`
       CREATE INDEX IF NOT EXISTS idx_alerts_status ON alerts(status);
     `);

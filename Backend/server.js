@@ -11,15 +11,12 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server, path: '/ws' });
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use('/api/alerts', alertRoutes);
 
-// Set up WebSocket server in sensorService
 sensorService.setWebSocketServer(wss);
 
-// MQTT Client setup
 const mqttClient = mqtt.connect('mqtt://localhost:1883', {
   clientId: 'smart_restroom_server_' + Math.random().toString(16).substr(2, 8),
   clean: true,

@@ -3,29 +3,26 @@ const thresholds = require('../config/thresholds');
 
 class AlertService {
   async createAlert(sensorType, value) {
-    // Only create alerts for specific sensors
     const alertSensors = ['soap', 'paper_towel_1', 'paper_towel_2', 'paper_towel_3', 'dustbin'];
     
     if (!alertSensors.includes(sensorType)) {
-      return; // Skip alert creation for other sensors
+      return; 
     }
 
     try {
-      // Check if there's already a pending alert for this sensor
-      const existingAlert = await pool.query(
+       const existingAlert = await pool.query(
         'SELECT id FROM alerts WHERE sensor_type = $1 AND status = $2',
         [sensorType, 'pending']
       );
 
       if (existingAlert.rows.length > 0) {
-        return; // Skip if there's already a pending alert
-      }
+        return;
+       }
 
-      // Check if the sensor value violates the threshold
       const threshold = thresholds[sensorType];
       const shouldCreateAlert = sensorType === 'dustbin' 
-        ? value > threshold  // Dustbin alert when above threshold
-        : value < threshold; // Other sensors alert when below threshold
+        ? value > threshold  
+        : value < threshold; 
 
       if (shouldCreateAlert) {
         console.log(`Creating alert for ${sensorType}, Value: ${value}, Threshold: ${threshold}`);
@@ -33,7 +30,7 @@ class AlertService {
           'INSERT INTO alerts (sensor_type, threshold_value, current_value) VALUES ($1, $2, $3)',
           [sensorType, threshold, value]
         );
-        await cleanupAlerts(); // Clean up resolved alerts older than 7 days
+        await cleanupAlerts(); 
       }
     } catch (error) {
       console.error('Error creating alert:', error.message);

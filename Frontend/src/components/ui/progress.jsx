@@ -1,4 +1,3 @@
-// src/components/ui/progress.jsx
 import React from 'react';
 
 const Progress = ({ value, className }) => {

@@ -33,7 +33,6 @@ class SensorService {
   }
 
   async updateSensorData() {
-    // Update sensor values
     this.sensorData = {
       soap: Math.max(0, this.sensorData.soap - 10),
       paper_towel_1: Math.max(0, this.sensorData.paper_towel_1 - 10),
@@ -43,14 +42,12 @@ class SensorService {
       people_count: Math.floor(Math.random() * 101)
     };
 
-    // Check each sensor and create alerts if needed
     for (const [sensor, value] of Object.entries(this.sensorData)) {
       if (sensor !== 'people_count') {
         await alertService.createAlert(sensor, value);
       }
     }
 
-    // Publish to MQTT if client exists
     if (this.mqttClient) {
       Object.entries(this.sensorData).forEach(([sensor, value]) => {
         this.mqttClient.publish(`sensors/${sensor}`, value.toString());

@@ -1,12 +1,11 @@
-// backend/config/mqtt.js
 const mqtt = require('mqtt');
-require('dotenv').config();  // Load environment variables from .env file
+require('dotenv').config(); 
 
 const mqttOptions = {
   host: process.env.MQTT_HOST,
   port: process.env.MQTT_PORT,
   protocol: process.env.MQTT_PROTOCOL,
-  reconnectPeriod: parseInt(process.env.MQTT_RECONNECT_PERIOD), // Convert string to number
+  reconnectPeriod: parseInt(process.env.MQTT_RECONNECT_PERIOD), 
 };
 
 const client = mqtt.connect(mqttOptions);

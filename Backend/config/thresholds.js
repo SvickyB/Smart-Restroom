@@ -1,5 +1,3 @@
-// backend/config/thresholds.js
-
 const thresholds = {
     soap: 20,
     paper_towel_1: 20,
