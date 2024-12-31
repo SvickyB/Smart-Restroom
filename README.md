@@ -5,7 +5,8 @@ A real-time monitoring solution for managing restroom facilities with sensor tra
 ## Dashboard Preview
 
 ### Sensor Monitoring Interface
-<img src="/api/placeholder/800/400" alt="Dashboard Preview">
+![WhatsApp Image 2024-12-31 at 6 32 05 AM](https://github.com/user-attachments/assets/02363743-3a66-4047-9ff9-df851f52cfcf)
+
 
 The dashboard provides real-time monitoring of:
 - Soap Dispenser Levels
@@ -14,7 +15,11 @@ The dashboard provides real-time monitoring of:
 - People Counter
 
 ### Active Alerts Panel
-<img src="/api/placeholder/800/300" alt="Alerts Panel">
+![WhatsApp Image 2024-12-31 at 6 39 28 AM](https://github.com/user-attachments/assets/93fffca3-0d4f-4826-bb3d-b743d846bd0a)
+
+### Sensor Monitoring Interface
+![WhatsApp Image 2024-12-31 at 6 39 44 AM](https://github.com/user-attachments/assets/30bf7c30-bd2e-43a4-95ee-00340daadc7f)
+
 
 ## Features
 
